@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { SimpleGauge } from "react-gauges";
+import Dashboard from './Dashboard';
 
-function App() {
+const SensorGauge = ({ value, label,minLimit, maxLimit, barColor, barBaseColor, labelTeemplate  }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+            <SimpleGauge value={value} minLimit={minLimit} maxLimit={maxLimit} barColor={barColor} barBaseColor={barBaseColor} labelTemplate={value+labelTeemplate}/>
+
     </div>
   );
-}
+};
+
+
+const App = () => {
+  return (
+    <div className="App">
+      <Dashboard />
+    </div>
+  );
+};
 
 export default App;
